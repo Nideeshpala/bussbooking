@@ -1,0 +1,51 @@
+.register{
+    width: 100%;
+    margin-left: 10%;
+    border: 5px solid rgb(92, 89, 89);
+    border-radius: 20px;
+}
+.cam{
+    border:5px solid rgb(92, 89, 89);
+}
+.lane1{
+    display: flex;
+    justify-content: space-around;
+
+    
+}
+.lane2{
+    display: flex;
+    justify-content: space-between;
+    
+
+}
+.dob{
+    width: 47%;
+}
+
+.lane3{
+    display: flex;
+    justify-content: space-around;
+}
+.inputre{
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 5%;
+    margin-left: 10px;
+    margin-right: 10px;
+   
+}
+.gender{
+    margin-right: 225px;
+    margin-top: 12%;
+}
+
+.circlere{
+    border:1px solid gray;
+    width: 50px;
+    height: 50px;
+    margin-top: 20%;
+    margin-left:45% ;
+    margin-bottom: 10%;
+    justify-content: center;
+}

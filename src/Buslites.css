@@ -1,0 +1,53 @@
+.bus {
+    border: rgb(201, 198, 198) 1px solid;
+    border-radius: 50px;
+    width: 60%;
+    text-align: left;
+    margin-top: 40px;
+    margin-left: 25px;
+
+}
+
+.bus h6 {
+    text-align: center;
+}
+
+.stime span {
+    margin-left: 150px;
+}
+
+.etime span {
+    margin-left: 150px;
+}
+
+.selection{
+    display: flex;
+}
+.img{
+    height: 150px;
+}
+.lis{
+    
+}
+.busdetails{
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.busimg{
+    height: 150px;
+}
+.b{
+  
+    margin-top: 25px;
+    width: 600px;
+    border:none;
+   
+}
+
+
+
+
+
+

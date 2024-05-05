@@ -1,0 +1,117 @@
+.busbody{
+    width:50%;
+  
+    border: 2px solid;
+    border-color: chocolate;
+    margin-left: 10%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+.first{
+   display: flex;
+   justify-content: space-between;
+   margin-left: 5%;
+   margin-right: 5%;
+   padding: 10px;
+   margin-top: 20px;
+  
+}
+.second{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding: 10px;
+   
+ }
+ .third{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding: 10px;
+   
+ }
+ .forth{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding: 10px;
+   
+ }
+ .fifth{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding: 10px;
+   
+ }
+ .sixth{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding: 10px;
+   
+ }
+ .seventh{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding: 10px;
+   
+ }
+ .eight{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding: 10px;
+   
+ }
+ .nineth{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding: 10px;
+   
+ }
+
+
+.busbody button{
+    width: 50px;
+}
+
+.busbody button:focus{
+   background-color: red;
+   color: white;
+ 
+}
+.steering{
+    width: 25%;
+    margin-left:-200px ;
+
+}
+.door{
+    border: 1px solid gray;
+    width: 5px;
+    height: 60px;
+   margin-left: 367px;
+}
+
+.businfo ,.userinfo{
+ text-align: left;
+}
+
+.book{
+   color: white;
+ background-color: rgb(0, 109, 192);  
+ border: 0px;
+}
+
+
