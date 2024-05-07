@@ -12,7 +12,7 @@ function Buslistes() {
     const [date,setdate]=useState("")
     const [allbus, setallbus] = useState([])
     
-    const { id } = useParams()
+  
 
     const navigate=useNavigate()
     
@@ -43,7 +43,7 @@ function Buslistes() {
       
 
 
-    }, [search])
+    }, [])
 
    
   

@@ -29,7 +29,7 @@ function App() {
         <Route path='/register' element={<Register></Register>}></Route>
         <Route path='/buslist' element={<Buslistes></Buslistes>}></Route>
         <Route path='/admin' element={<Admins></Admins>}></Route>
-        <Route path='/seat/:_id' element={<Buslayout></Buslayout>}></Route>
+        <Route path='/seat/:id' element={<Buslayout></Buslayout>}></Route>
        
       </Routes>
 

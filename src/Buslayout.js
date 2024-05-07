@@ -22,25 +22,33 @@ function Buslayout() {
     const navigate = useNavigate()
     const { id } = useParams()
     const user = JSON.parse(localStorage.getItem('login'))
-    const sin= JSON.parse(localStorage.getItem('buss'))
-   
+
+    console.log("id", id.trim());
+
+
+
+
+    // const buss = async () => {
+    //     let { data } = await getbos(id)
+    //     setbus(data);
+    // }
+    const buss = async () => {
+        try {
+            const { data } = await getbos(id);
+            setbus(data);
+        } catch (error) {
+            console.error("Error fetching bus data:", error);
+            // Handle errors (e.g., show an error message)
+        }
+    };
+    console.log(bus);
+
+
     // console.log(user);
-    const [book, setbook] = useState({
-        sename,
-        sname:user.sname,
-        gender:user.gender,
-        email:user.email,
-       busname:sin.busname,
-        busno:sin.busno,
-        from:sin.from,
-        to:sin.to,
-        price:sin.price,
-        age,
-       
-       
-    })
+    const [book, setbook] = useState("")
 
     console.log(book);
+
 
 
 
@@ -50,11 +58,12 @@ function Buslayout() {
     // seat no pickking
 
     const handleclick = event => {
-        const name = (event.target.name);
-        const id = (event.target.id);
-        setname(name)
-    }
-    console.log(sename);
+        const name = event.target.name;
+        const id = event.target.id;
+        setname(name);
+    };
+
+    console.log(sename); 
 
     // console.log(busdet);
     //    user set into local storage
@@ -87,24 +96,13 @@ function Buslayout() {
     }
     console.log(age);
 
-   
-    const buss = async () => {
-        const response = await getbos(id)
-
-        localStorage.setItem("buss",JSON.stringify(response.data))
-    
-        setbus(response.data)
-      
-       
-
-    }
-    console.log("bus",bus);
 
 
 
 
     const handlebook = async (e) => {
         e.preventDefault()
+
 
 
 
@@ -116,7 +114,20 @@ function Buslayout() {
             if (responce.status == 200) {
                 alert('Booking successful:', responce);
                 navigate('/buslist')
-            
+                // setbook({
+                //     ...book,
+                //     sename: "",
+                //     sname: "",
+                //     gender: "",
+                //     email: "",
+                //     busname: "",
+                //     busno: "",
+                //     from: "",
+                //     to: "",
+                //     age: ""
+                // })
+
+
             }
 
             else {
@@ -134,20 +145,36 @@ function Buslayout() {
 
     }
     useEffect(() => {
+
+        
+
+
         if (!user) {
             navigate("/")
         }
+        else {
+            buss();
+            calculateAge();
+        }
 
-        buss()
-        calculateAge();
-        
-       
+        setbook({
+            
+            sname:user.sname,
+            email:user.email,
+            gender:user.gender,
+            age,
+            busname:bus.busname,
+            busno:bus.busno,
+            from:bus.from,
+            to:bus.to,
+            price:bus.price,
+            sename:sename
+        })
 
+    }, [])
+    console.log(book);
+    
 
-
-
-    },[])
-    console.log(bus);
 
 
 
