@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { getbos,getallbus, } from './service/Allapi'
 import { Card, Col, Row } from 'react-bootstrap'
 import './Buslites.css';
+import { bookedContext } from './usercontext/Contextshare';
+import Bussearch from './Bussearch';
+
 
 
 function Buslistes() {
@@ -11,6 +14,15 @@ function Buslistes() {
     const [from,setfrom]=useState("")
     const [date,setdate]=useState("")
     const [allbus, setallbus] = useState([])
+    const {booked,setbooked}=useContext(bookedContext)
+
+    const [Dtime,setDtime]=useState("")
+    const [Atime,setAtime]=useState("")
+   
+
+    console.log(booked);
+
+    // const user = JSON.parse(localStorage.getItem('login'))
     
   
 
@@ -18,118 +30,111 @@ function Buslistes() {
     
   
     const getbuses = async () => {
-      const response = await getallbus()
-   setallbus(response.data);
-  
+
+      try{
+      const token = JSON.parse(localStorage.getItem('login')); // Fetch user data directly inside getbuses
+      console.log(token.token);
+      if (token) {
+        const headers =  {
+          Authorization: `Bearer ${token.token}` // Use user.token directly here
+        };
+        
+        const response = await getallbus(headers);
+        setallbus(response.data);
+      } else {
+        alert("invalid access")
+        
+      }
+    }catch(err){
+      alert(err)
+      navigate('/');
+
     }
-    console.log(allbus);
-  
-    
-   
-   
-    
+    };
+   console.log(allbus);
+ 
 
    
     useEffect(() => {
-    
-
-      if(localStorage.sname==""){
-        navigate("/")
-      }
-      else{
-         getbuses()
-      }
-   
-      
-
-
-    }, [])
+  try{
+    getbuses()
+  }
+  catch(err){
+    alert("invalid access")
+  }
+       
+          }, [])
 
    
   
   
   const [show, setShow] = useState(false);
 
- const handleshow=()=>{
+//  const handleshow=()=>{
 
-  document.getElementById('lay').style.display="block"
-  document.getElementById('tr').style.display="none"
- }
+//   document.getElementById('lay').style.display="block"
+//   document.getElementById('tr').style.display="none"
+//  }
   return (
     <div>
+  <Row className='w-100'>
+    <Col lg={2}>
+      
+    </Col>
 
-<Row className='w-100'>
-        <Col lg={6}>
+    <Col lg={10}>
+<Bussearch></Bussearch>
 
+    <div className='mt-4' >
+      {allbus?.map((i) => (
+            <div > 
+              <Link style={{textDecoration:'none' }} to={`/seat/${i._id}`}>
+                <div id='tr' className='whca ms-5' >
+                <Card className="shadow-lg p-3  bg-body-tertiary rounded" style={{background:"linear-gradient(to right, rgb(237, 45, 215), rgb(74, 11, 222))"}}>
+                  <h2 className='st ms-2' style={{textAlign:"left"}}>{i.busname}</h2>
+                  <div className='container w-50' style={{display:'flex', justifyContent:'space-around'}}>
+                    <h6 className='st'>{i.Atime}</h6>
+                    <h4 className='st'>{i.Jdate}</h4>
+                    <h6 className='st'>{i.Dtime}</h6>
+                  </div>
+                  <h5  className='mt-3 st' style={{color:'#ffffff'}}><i class="fa-sharp fa-solid fa-indian-rupee-sign "></i> {i.price}</h5>
 
-          <div className='list'>
-            <div>
-              <h3>Buslist</h3>
-              <div className='selection'>
-                <div class="inputre form-floating mb-3">
-                <select class="form-select " onChange={e => setfrom(e.target.value)} aria-label="Default select example" >
-                    <option selected>From</option>
-                    <option value="1">Chennai</option>
-                  </select>
+                  <div className='st container w-50 mt-3' style={{display:'flex',justifyContent:'space-around'}}>
+                    <h6 className='st'>{i.from}</h6>
+                    <i className=' st fa-solid fa-arrow-right'></i>
+                    <h6 className='st'>{i.to}</h6>
+                  </div>
+
+                 
+                 
+          
+          <Card.Body>
+            <Card.Text className='text-black'>
+            <div className='ms-2 w-25' style={{display:'flex', justifyContent:'space-between'}}>
+                  <i class="fa-solid fa-bottle-water" style={{color:'#ffffff'}}></i>
+                  <i class="fa-solid fa-plug" style={{color:'#ffffff'}}></i>
+                  <i class="fa-solid fa-lightbulb" style={{color:'#ffffff'}}></i>
+                  <i class="fa-solid fa-book" style={{color:"#ffffff"}}></i>
+                  </div>
+             
+            </Card.Text>
+          </Card.Body>
+        </Card>
+        <br />
+                  <hr style={{ marginLeft: "50px" }} />
                 </div>
-                <div class="inputre form-floating mb-3">
-                  <select class="form-select " onChange={e => setsearch(e.target.value)}  aria-label="Default select example" >
-                    <option selected >To</option>
-                    <option value="1">banglure</option>
-                    <option value="2">Trivandrum</option>
-                    <option value="3">Hydrabad</option>
-                  </select>
-                </div>
-
-                <div class="inputre form-floating mb-3">
-                  <input type="date" class="form-control" name='to' onChange={e => setdate(e.target.value)} required id="to" placeholder="Name"></input>
-                  <label for="Destination">Date</label>
-                </div>
-              </div>
-
-
+              </Link>
             </div>
-            
-          
-        
-           {allbus?.map(i=>(
-                 <div>
-                     <Link to={`/seat/${i._id}}`}>
-                      <div id='tr' className='whca ms-5'  onClick={handleshow}>
-                         <Card className='b mb-3'>
-                      <Card.Img className='busimg' variant="top" src="https:/i.postimg.cc/vTNR8bzw/istockphoto-860696690-2048x2048.jpg" />
-                      <Card.Body>
-                        <Card.Text>
-                         <div className='busdetails'>
-                           <div>*Busname:{i.busname}</div>
-                           <div>*Starts From:{i.from}</div>
-                           <div>*To:{i.to}</div>
-                           <div>*Departure Time:{i.Dtime}</div>
-                         </div>
-                        </Card.Text>
-                      </Card.Body>
-                    </Card>
-                    <hr style={{marginLeft:"50px"}} />
-                   
-                      </div>
-                
-                
-             </Link>
-                 </div>
-                 ))}
-          
-        
-    
-           
-          </div>
-        </Col>
-
-        <Col lg={6}>
-
-          <div id='lay' style={{display:"none"}}></div>
-        </Col>
-      </Row>
+          ))}
     </div>
+
+    </Col>
+
+    {/* <Col lg={6}>
+      <div id='lay' style={{ display: "none" }}></div>
+    </Col> */}
+  </Row>
+</div>
   )
 }
 

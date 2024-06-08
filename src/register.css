@@ -19,13 +19,13 @@
     
 
 }
-.dob{
-    width: 47%;
+.dos{
+  
 }
 
 .lane3{
     display: flex;
-    justify-content: space-around;
+    justify-content:flex-start ;
 }
 .inputre{
     width: 80%;
@@ -36,7 +36,7 @@
    
 }
 .gender{
-    margin-right: 225px;
+    margin-left:150px;
     margin-top: 12%;
 }
 

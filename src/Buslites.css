@@ -23,17 +23,13 @@
 .selection{
     display: flex;
 }
-.img{
-    height: 150px;
-}
+
 .lis{
     
 }
 .busdetails{
     display: flex;
-    justify-content: space-around;
-    text-decoration: none;
-
+    justify-content: space-evenly;
 }
 
 .busimg{
@@ -46,7 +42,14 @@
     border:none;
    
 }
+.inputs{
+    display: flex;
+    justify-content: space-between;
+}
 
+.st{
+    color: white;
+}
 
 
 

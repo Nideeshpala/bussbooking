@@ -1,17 +1,19 @@
 
 .sign{
-  border: 3px solid rgb(62, 60, 60);
-  width: 50%;
+  border: 3px solid rgb(255, 255, 255);
+
  
   border-radius: 20px;
   margin-left: 2%;
   margin-left: 50%;
+  align-items: center;
 
   
 
 }
 .heading{
     margin-top: 5%;
+    color: white;
 }
 .carousel{
     width:100%;
@@ -32,7 +34,7 @@
     margin-top: 5%;
 }
 .circle{
-    border:1px solid gray;
+    border:1px solid rgb(255, 255, 255);
     width: 50px;
     height: 50px;
     margin-top: 20%;
@@ -42,11 +44,53 @@
    justify-items: center;
 }
 .cam{
-    border: 5px rgb(62, 60, 60) solid;
+   
+    background-color: white;
     width: 25%;
     border-radius: 2px;
     margin-left: 39%;
+    height: 10px;
+  
 }
+
 .carousel{
     margin-left: auto;
+}
+.column2 h1,p{
+    color: white;
+    text-align: right;
+    margin-top: 20%;
+
+  
+}
+.column2 p{
+    padding-left: 50%;
+}
+
+
+
+.custom-div {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    z-index: 1000;
+}
+
+.custom-div-content {
+    position: relative;
+}
+
+.custom-div-close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: none;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
 }
